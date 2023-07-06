@@ -7,6 +7,8 @@ import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
+// need to add back in all the Auth and Mutations above into the code below
+
 const CreatePost = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');

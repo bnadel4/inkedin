@@ -4,6 +4,9 @@ import { useMutation } from '@apollo/client';
 
 import { ADD_COMMENT } from '../../utils/mutations';
 
+// need to work the ADD_COMMENT mutation back into the code below
+// and the login Auth
+
 import Auth from '../../utils/auth';
 
 const CommentForm = ({ onSubmit }) => {
