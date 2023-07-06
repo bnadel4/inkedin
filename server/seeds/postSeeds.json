@@ -1,0 +1,24 @@
+[
+  {
+    "postText": "I ink, therefore I am.",
+    "imageURL": "https://media.istockphoto.com/id/1009094792/vector/monochrome-engraving-brain-illustration-frontal.jpg?s=612x612&w=0&k=20&c=yz5815Wjry2VOV00xK5UGoVnfnXnkKW5jSwSE1lKbdw=",
+    "username": "PJ",
+    "comments": [
+      {
+        "commentText": "You really ink so?",
+        "username": "Jon"
+      }
+    ]
+  },
+  {
+    "postText": "Rat-tattoo-ille",
+    "imageURL": "https://www.itattoodesigns.com/images/articles/rat_tattoo_designs.jpg",
+    "username": "Jon",
+    "comments": [
+      {
+        "commentText": "Ew.",
+        "username": "Adam"
+      }
+    ]
+  }
+]
