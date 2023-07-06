@@ -7,6 +7,46 @@ import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
+// need to add back in all the Auth and Mutations above into the code below
+
+const CreatePost = ({ onSubmit }) => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Pass the new post data to the parent component
+    onSubmit({ title, content });
+    setTitle('');
+    setContent('');
+  };
+
+  return (
+    <div>
+      <h2>Create a New Post</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Title"
+          required
+        />
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Content"
+          required
+        ></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default CreatePost;
+
+
 // const ThoughtForm = () => {
 //   const [thoughtText, setThoughtText] = useState('');
 
@@ -109,5 +149,3 @@ import Auth from '../../utils/auth';
 //     </div>
 //   );
 // };
-
-export default ThoughtForm;

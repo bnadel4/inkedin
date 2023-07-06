@@ -1,6 +1,20 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import React from 'react';
+
+const Footer = () => {
+  return (
+    <footer>
+      {/* Footer content */}
+    </footer>
+  );
+};
+
+export default Footer;
+
+
+
 // const Footer = () => {
 //   const location = useLocation();
 //   const navigate = useNavigate();
@@ -31,5 +45,3 @@ import { useLocation, useNavigate } from 'react-router-dom';
 //     </footer>
 //   );
 // };
-
-export default Footer;

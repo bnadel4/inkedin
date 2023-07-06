@@ -1,37 +1,37 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
+import Header from './components/header';
+import Footer from './components/footer';
+import PostList from './components/postList';
+import CreatePost from './components/createPost';
+import CommentList from './components/commentList';
+import CommentForm from './components/commentForm';
 
 import { QUERY_THOUGHTS } from '../utils/queries';
 
-// const Home = () => {
-//   const { loading, data } = useQuery(QUERY_THOUGHTS);
-//   const thoughts = data?.thoughts || [];
-
-//   return (
-//     <main>
-//       <div className="flex-row justify-center">
-//         <div
-//           className="col-12 col-md-10 mb-3 p-3"
-//           style={{ border: '1px dotted #1a1a1a' }}
-//         >
-//           <ThoughtForm />
-//         </div>
-//         <div className="col-12 col-md-8 mb-3">
-//           {loading ? (
-//             <div>Loading...</div>
-//           ) : (
-//             <ThoughtList
-//               thoughts={thoughts}
-//               title="Some Feed for Thought(s)..."
-//             />
-//           )}
-//         </div>
-//       </div>
-//     </main>
-//   );
-// };
+const Home = () => {
+  // Fetching thoughts using useQuery hook from Apollo Client
+  const { loading, data } = useQuery(QUERY_THOUGHTS);
+  
+  return (
+    <div>
+      {/* Top Navigation Bar */}
+      <nav style={{ background: 'black', color: 'white', padding: '1rem' }}>
+        {/* Navigation content */}
+      </nav>
+      
+      {/* Center Section */}
+      <section style={{ background: 'grey', minHeight: 'calc(100vh - 64px)', padding: '2rem' }}>
+        {/* Thoughts List */}
+        <ThoughtList thoughts={data?.thoughts || []} loading={loading} />
+        
+        {/* Thought Form */}
+        <ThoughtForm />
+      </section>
+    </div>
+  );
+};
 
 export default Home;
+

@@ -1,6 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const PostList = ({ posts }) => {
+  return (
+    <div>
+      {/* Render the list of posts */}
+      {posts.map((post) => (
+        <div key={post.id}>
+          <h2>{post.title}</h2>
+          <p>{post.content}</p>
+          {/* Render the comment form for each post */}
+          <CommentForm postId={post.id} />
+          {/* Render the comments for each post */}
+          <CommentList comments={post.comments} />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default PostList;
+
+
+
+
 // const ThoughtList = ({
 //   thoughts,
 //   title,
@@ -50,5 +73,3 @@ import { Link } from 'react-router-dom';
 //     </div>
 //   );
 // };
-
-export default ThoughtList;

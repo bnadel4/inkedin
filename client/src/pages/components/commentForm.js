@@ -4,7 +4,39 @@ import { useMutation } from '@apollo/client';
 
 import { ADD_COMMENT } from '../../utils/mutations';
 
+// need to work the ADD_COMMENT mutation back into the code below
+// and the login Auth
+
 import Auth from '../../utils/auth';
+
+const CommentForm = ({ onSubmit }) => {
+  const [comment, setComment] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Pass the new comment data to the parent component
+    onSubmit(comment);
+    setComment('');
+  };
+
+  return (
+    <div>
+      <h2>Add a Comment</h2>
+      <form onSubmit={handleSubmit}>
+        <textarea
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          placeholder="Your comment"
+          required
+        ></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default CommentForm;
+
 
 // const CommentForm = ({ thoughtId }) => {
 //   const [commentText, setCommentText] = useState('');
@@ -84,5 +116,3 @@ import Auth from '../../utils/auth';
 //     </div>
 //   );
 // };
-
-export default CommentForm;

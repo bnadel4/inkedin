@@ -1,5 +1,21 @@
 import React from 'react';
 
+const CommentList = ({ comments }) => {
+  return (
+    <div>
+      {/* Render the list of comments */}
+      {comments.map((comment) => (
+        <div key={comment.id}>
+          <p>{comment.text}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default CommentList;
+
+
 // const CommentList = ({ comments = [] }) => {
 //   if (!comments.length) {
 //     return <h3>No Comments Yet</h3>;
@@ -32,5 +48,3 @@ import React from 'react';
 //     </>
 //   );
 // };
-
-export default CommentList;
