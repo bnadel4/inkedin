@@ -1,7 +1,28 @@
 [
   {
-    "username": "Brian Kernighan",
-    "email": "bkernighan@techfriends.dev",
-    "password": "password01"
+    "username": "PJ",
+    "email": "pj@somewhere.com",
+    "password": "password01",
+    "zipcode": "28806",
+    "isArtist": "true",
+    "contact": "802-922-3469",
+    "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk0IC5nomMwOS5NqaPivVJH0HyRX_OXe97HXdMs2gL4k8U6RyjxDvj9Ib7-pQ32N37UL4&usqp=CAU"
+  },
+    {
+    "username": "Jon",
+    "email": "jon@somewhere.com",
+    "password": "password01",
+    "zipcode": "10001",
+    "contact": "Send a telegram",
+    "imageURL": "https://ca.slack-edge.com/T04F4BPC51P-U04JVDRAY5D-b8f6feb4124d-512"
+  },
+    {
+    "username": "Adam",
+    "email": "adam@somewhere.com",
+    "password": "password01",
+    "zipcode": "28715",
+    "isArtist": "true",
+    "contact": "800-867-5309",
+    "imageURL": "https://ca.slack-edge.com/T04F4BPC51P-U04KNN4D9LG-5a62d1590ebd-512"
   }
 ]
