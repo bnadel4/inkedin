@@ -3,6 +3,20 @@ import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 
+const Header = () => {
+  return (
+    <header>
+      {/* Header content */}
+    </header>
+  );
+};
+
+export default Header;
+
+
+
+
+
 // const Header = () => {
 //   const logout = (event) => {
 //     event.preventDefault();
@@ -42,5 +56,3 @@ import Auth from '../../utils/auth';
 //     </header>
 //   );
 // };
-
-export default Header;

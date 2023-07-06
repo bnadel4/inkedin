@@ -2,50 +2,58 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { ADD_COMMENT } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-// const ThoughtForm = () => {
-//   const [thoughtText, setThoughtText] = useState('');
+const CommentForm = ({ onSubmit }) => {
+  const [comment, setComment] = useState('');
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Pass the new comment data to the parent component
+    onSubmit(comment);
+    setComment('');
+  };
+
+  return (
+    <div>
+      <h2>Add a Comment</h2>
+      <form onSubmit={handleSubmit}>
+        <textarea
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          placeholder="Your comment"
+          required
+        ></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default CommentForm;
+
+
+// const CommentForm = ({ thoughtId }) => {
+//   const [commentText, setCommentText] = useState('');
 //   const [characterCount, setCharacterCount] = useState(0);
 
-//   const [addThought, { error }] = useMutation(ADD_THOUGHT, {
-//     update(cache, { data: { addThought } }) {
-//       try {
-//         const { thoughts } = cache.readQuery({ query: QUERY_THOUGHTS });
-
-//         cache.writeQuery({
-//           query: QUERY_THOUGHTS,
-//           data: { thoughts: [addThought, ...thoughts] },
-//         });
-//       } catch (e) {
-//         console.error(e);
-//       }
-
-//       // update me object's cache
-//       const { me } = cache.readQuery({ query: QUERY_ME });
-//       cache.writeQuery({
-//         query: QUERY_ME,
-//         data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
-//       });
-//     },
-//   });
+//   const [addComment, { error }] = useMutation(ADD_COMMENT);
 
 //   const handleFormSubmit = async (event) => {
 //     event.preventDefault();
 
 //     try {
-//       const { data } = await addThought({
+//       const { data } = await addComment({
 //         variables: {
-//           thoughtText,
-//           thoughtAuthor: Auth.getProfile().data.username,
+//           thoughtId,
+//           commentText,
+//           commentAuthor: Auth.getProfile().data.username,
 //         },
 //       });
 
-//       setThoughtText('');
+//       setCommentText('');
 //     } catch (err) {
 //       console.error(err);
 //     }
@@ -54,15 +62,15 @@ import Auth from '../../utils/auth';
 //   const handleChange = (event) => {
 //     const { name, value } = event.target;
 
-//     if (name === 'thoughtText' && value.length <= 280) {
-//       setThoughtText(value);
+//     if (name === 'commentText' && value.length <= 280) {
+//       setCommentText(value);
 //       setCharacterCount(value.length);
 //     }
 //   };
 
-//   return (
-//     <div>
-//       <h3>What's on your techy mind?</h3>
+  // return (
+  //   <div>
+  //     {/* <h4>What are your thoughts on this thought?</h4>
 
 //       {Auth.loggedIn() ? (
 //         <>
@@ -72,6 +80,7 @@ import Auth from '../../utils/auth';
 //             }`}
 //           >
 //             Character Count: {characterCount}/280
+//             {error && <span className="ml-2">{error.message}</span>}
 //           </p>
 //           <form
 //             className="flex-row justify-center justify-space-between-md align-center"
@@ -79,9 +88,9 @@ import Auth from '../../utils/auth';
 //           >
 //             <div className="col-12 col-lg-9">
 //               <textarea
-//                 name="thoughtText"
-//                 placeholder="Here's a new thought..."
-//                 value={thoughtText}
+//                 name="commentText"
+//                 placeholder="Add your comment..."
+//                 value={commentText}
 //                 className="form-input w-100"
 //                 style={{ lineHeight: '1.5', resize: 'vertical' }}
 //                 onChange={handleChange}
@@ -90,14 +99,9 @@ import Auth from '../../utils/auth';
 
 //             <div className="col-12 col-lg-3">
 //               <button className="btn btn-primary btn-block py-3" type="submit">
-//                 Add Thought
+//                 Add Comment
 //               </button>
 //             </div>
-//             {error && (
-//               <div className="col-12 my-3 bg-danger text-white p-3">
-//                 {error.message}
-//               </div>
-//             )}
 //           </form>
 //         </>
 //       ) : (
@@ -105,9 +109,7 @@ import Auth from '../../utils/auth';
 //           You need to be logged in to share your thoughts. Please{' '}
 //           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
 //         </p>
-//       )}
+//       )} */}
 //     </div>
 //   );
 // };
-
-export default ThoughtForm;
