@@ -1,6 +1,28 @@
 const { Schema, model, Types } = require('mongoose');
 // const dateFormat = require('../utils/dateFormat');
 
+const commentSchema = new Schema({
+  commentId: {
+    type: Schema.Types.ObjectId,
+    default: () => new Types.ObjectId(),
+  },
+  commentText: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 280,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+})
+
+
 const postSchema = new Schema({
   postText: {
     type: String,
@@ -18,26 +40,7 @@ const postSchema = new Schema({
     trim: true,
   },
   comments: [
-    {
-      commentId: {
-        type: Schema.Types.ObjectId,
-        default: () => new Types.ObjectId(),
-      },
-      commentText: {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 280,
-      },
-      username: {
-        type: String,
-        required: true,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-      },
-    },
+    commentSchema
   ],
 },
 {
