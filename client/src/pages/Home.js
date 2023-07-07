@@ -16,6 +16,9 @@ const Home = () => {
   
   return (
     <div>
+      {/* Header */}
+      <Header />
+
       {/* Top Navigation Bar */}
       <nav style={{ background: 'black', color: 'white', padding: '1rem' }}>
         {/* Navigation content */}
@@ -23,12 +26,12 @@ const Home = () => {
       
       {/* Center Section */}
       <section style={{ background: 'grey', minHeight: 'calc(100vh - 64px)', padding: '2rem' }}>
-        {/* Thoughts List */}
-        <ThoughtList thoughts={data?.thoughts || []} loading={loading} />
-        
-        {/* Thought Form */}
-        <ThoughtForm />
+        {/* Post List */}
+        <PostList posts={data?.posts || []} />
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
