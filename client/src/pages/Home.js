@@ -1,8 +1,8 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import Header from './components/header';
-import Footer from './components/footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import PostList from './components/postList';
 import CreatePost from './components/createPost';
 import CommentList from './components/commentList';
@@ -24,10 +24,11 @@ const Home = () => {
       {/* Center Section */}
       <section style={{ background: 'grey', minHeight: 'calc(100vh - 64px)', padding: '2rem' }}>
         {/* Thoughts List */}
-        <ThoughtList thoughts={data?.thoughts || []} loading={loading} />
+{/* Adam to adjust these props etc */}
+        <PostList thoughts={data?.thoughts || []} loading={loading} />
         
         {/* Thought Form */}
-        <ThoughtForm />
+        <PostForm />
       </section>
     </div>
   );
