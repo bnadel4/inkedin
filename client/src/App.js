@@ -7,7 +7,6 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
-
 import Header from './pages/components/header';
 import Footer from './pages/components/footer';
 
