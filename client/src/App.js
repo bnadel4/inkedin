@@ -25,7 +25,7 @@ function App() {
     <Header/>
       <Routes>
         <Route path="/" exact element={<Home/>} />
-        <Route path="/login"element={<Login/>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/signup" element={<Signup/>} />
       </Routes>
