@@ -137,7 +137,7 @@ const resolvers = {
         return Post.findOneAndUpdate(
           { _id: postId, comments: { $elemMatch: { commentId: commentId, } }},
           { $set: { "comments.$.commentText": commentText } },
-          {
+          {   
             new: true,
             runValidators: true,
           }
