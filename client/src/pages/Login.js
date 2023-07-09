@@ -16,9 +16,9 @@ const Login = () => {
 
     try {
       const { data } = await login({
-        variables: { username, password },
+        variables: { email: username, password },
       });
-
+      
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
@@ -50,17 +50,17 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" onClick={handleLogin}>Login</button>
       </form>
 
       {error && (
         <div>
           <p>Error logging in. Please try again.</p>
+          <p>{error.message}</p>
         </div>
       )}
     </div>
-  );
-};
+  )};
 
 export default Login;
 

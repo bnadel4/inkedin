@@ -10,9 +10,9 @@ const PostList = ({ posts }) => {
           <h2>{post.title}</h2>
           <p>{post.content}</p>
           {/* Render the comment form for each post */}
-          <CommentForm postId={post.id} />
+          {/* <CommentForm postId={post.id} /> */}
           {/* Render the comments for each post */}
-          <CommentList comments={post.comments} />
+          {/* <CommentList comments={post.comments} /> */}
         </div>
       ))}
     </div>
