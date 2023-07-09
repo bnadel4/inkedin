@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from './components/header';
+import Footer from './components/footer';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
