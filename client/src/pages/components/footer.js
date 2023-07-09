@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer>
-      {/* Footer content */}
+      Hey
     </footer>
   );
 };
