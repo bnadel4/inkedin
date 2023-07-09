@@ -1,14 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_POSTS } from '../../utils/queries';
 
-const PostList = ({ posts }) => {
+const PostList = () => {
+  const { loading, error, data } = useQuery(GET_POSTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const posts = data?.posts || [];
+  console.log(posts)
   return (
     <div>
       {/* Render the list of posts */}
       {posts.map((post) => (
-        <div key={post.id}>
+        <div key={post._id}>
           <h2>{post.title}</h2>
           <p>{post.content}</p>
+
+          
           {/* Render the comment form for each post */}
           {/* <CommentForm postId={post.id} /> */}
           {/* Render the comments for each post */}

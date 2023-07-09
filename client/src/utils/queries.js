@@ -60,11 +60,14 @@ export const QUERY_ME = gql`
 `;
 
 export const GET_POSTS = gql`
-  query getPosts {
+  query posts {
     post {
-      id
-      title
-      content
+      _id
+      username
+      imageURL
+      postText
+      createdAt
+      comments
     }
   }
 `;
