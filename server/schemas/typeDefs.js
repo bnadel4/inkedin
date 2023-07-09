@@ -6,9 +6,9 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
-    zipcode: Number
+    zipcode: String
     isArtist: Boolean
-    contact: STring
+    contact: String
     imageURL: String
     posts: [Post!]
     createdAt: String!

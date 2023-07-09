@@ -4,39 +4,29 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
-// New Code to go with Home.js,  left the original commented out stuff at the bottom incase of missing code
-import React, { useState } from 'react';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const [login, { error }] = useMutation(LOGIN_USER);
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
-         setFormState({
-              ...formState,
-              [name]: value,
-            });
-          };
-        
-          const handleFormSubmit = async (event) => {
-            event.preventDefault();
-            console.log(formState);
-            try {
-              const { data } = await login({
-                variables: { ...formState },
-              });
-        
-              Auth.login(data.login.token);
-            } catch (e) {
-              console.error(e);
-            }
-            setFormState({
-              email: '',
-              password: '',
-            });
-          };
+    try {
+      const { data } = await login({
+        variables: { username, password },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    setUsername('');
+    setPassword('');
+  };
 
   return (
     <div>
@@ -62,12 +52,96 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+
+      {error && (
+        <div>
+          <p>Error logging in. Please try again.</p>
+        </div>
+      )}
     </div>
   );
 };
 
-
 export default Login;
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
+// import { useMutation } from '@apollo/client';
+// import { LOGIN_USER } from '../utils/mutations';
+
+// import Auth from '../utils/auth';
+// // New Code to go with Home.js,  left the original commented out stuff at the bottom incase of missing code
+
+// const Login = () => {
+//   const [username, setUsername] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
+
+//          setFormState({
+//               ...formState,
+//               [name]: value,
+//             });
+//           };
+        
+//           const handleFormSubmit = async (event) => {
+//             event.preventDefault();
+//             console.log(formState);
+//             try {
+//               const { data } = await login({
+//                 variables: { ...formState },
+//               });
+        
+//               Auth.login(data.login.token);
+//             } catch (e) {
+//               console.error(e);
+//             }
+//             setFormState({
+//               email: '',
+//               password: '',
+//             });
+//           };
+
+//   return (
+//     <div>
+//       <h2>Login</h2>
+//       <form onSubmit={handleLogin}>
+//         <div>
+//           <label htmlFor="username">Username</label>
+//           <input
+//             type="text"
+//             id="username"
+//             value={username}
+//             onChange={(e) => setUsername(e.target.value)}
+//           />
+//         </div>
+//         <div>
+//           <label htmlFor="password">Password</label>
+//           <input
+//             type="password"
+//             id="password"
+//             value={password}
+//             onChange={(e) => setPassword(e.target.value)}
+//           />
+//         </div>
+//         <button type="submit">Login</button>
+//       </form>
+//     </div>
+//   );
+// };
+
+
+// export default Login;
 
 // const Login = (props) => {
 //   const [formState, setFormState] = useState({ email: '', password: '' });
