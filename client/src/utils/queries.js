@@ -61,7 +61,7 @@ export const QUERY_ME = gql`
 
 export const GET_POSTS = gql`
   query posts {
-    post {
+    posts {
       _id
       username
       imageURL
