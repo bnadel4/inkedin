@@ -3,10 +3,10 @@ import React from 'react';
 import CommentForm from './commentForm';
 
 import { useQuery } from '@apollo/client';
-import { GET_POSTS } from '../../utils/queries';
+import { GET_POSTS } from '../utils/queries';
 
-import '../css/style.css';
-import '../css/fonts.css';
+import '../pages/css/style.css';
+import '../pages/css/fonts.css';
 
 
 const PostList = () => {

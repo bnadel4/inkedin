@@ -4,12 +4,10 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import Header from './components/header';
-import Footer from './components/footer';
-
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
+
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -21,7 +19,7 @@ const Profile = () => {
   const user = data?.me || data?.user || {};
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/me" />;
+    return <Navigate to="/profile" />;
   }
 
   if (loading) {
@@ -38,8 +36,7 @@ const Profile = () => {
 
   return (
     <div>
-      {/* Header */}
-      <Header />
+    
 
       <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
@@ -64,8 +61,7 @@ const Profile = () => {
         )}
       </div>
 
-      {/* Footer */}
-      <Footer />
+     
     </div>
   );
 };
