@@ -1,6 +1,13 @@
 import React from 'react';
+
+import CommentForm from './commentForm';
+
 import { useQuery } from '@apollo/client';
 import { GET_POSTS } from '../../utils/queries';
+
+import '../css/style.css';
+import '../css/fonts.css';
+
 
 const PostList = () => {
   // Use the useQuery hook to fetch the posts
@@ -13,20 +20,18 @@ const PostList = () => {
   
   console.log(posts);
   return (
-    <div>
-      <h2>Post List</h2>
+    <div >
       { !loading && posts && posts.map((post) => (
-        <div key={post._id}>
-          <h3>{post.username}</h3>
-          <p>{post.postText}</p>
-          {post.imageURL && <img src={post.imageURL} alt="Post" />}
-          <p>{post.createdAt}</p>
-          <h4>Comments:</h4>
-          {post.comments.map((comment) => (
-            <div key={comment._id}>
-              <p>{comment.username}: {comment.commentText}</p>
-              <p>{comment.createdAt}</p>
-            </div>
+        <div class="card container col-md-5 border border-5 border-dark rounded-5 postlist posttext" key={post._id}>
+          <h3 class="font card-title">{post.username}</h3>
+            <p class="font">{post.postText}</p>
+              {post.imageURL && <img src={post.imageURL} alt="Post" />}
+          <p><CommentForm/></p>
+            <h4 class="font card-text">Comments:</h4>
+              {post.comments.map((comment) => (
+              <div class="font card-footer text-muted" key={comment._id}>
+                <p class="font">{comment.username}: {comment.commentText}</p>
+              </div>
           ))}
         </div>
       ))}
