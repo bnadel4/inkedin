@@ -9,7 +9,7 @@ import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Header from './pages/components/header';
 import Footer from './pages/components/footer';
-import Styles from 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const client = new ApolloClient({
   uri: '/graphql',
