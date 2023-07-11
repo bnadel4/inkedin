@@ -10,13 +10,13 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
+    <header className="bg-dark text-light mb-4 py-3 flex-row align-center">
+      <div className="container d-flex justify-content-between">
         <div>
-          <Link className="text-light" to="/">
+          <Link className="primary-link align-left" to="/">
             <h1 className="m-0">InkedIn</h1>
           </Link>
-          <p className="m-0">Insert Tag line for App here!</p>
+          <p className="m-0">Welcome to InkedIn!</p>
         </div>
         <div>
           {Auth.loggedIn() ? (
@@ -30,7 +30,7 @@ const Header = () => {
             </>
           ) : ( 
             <>
-              <Link className="btn d-flex flex-reverse btn-small float-right btn-dark m-2" to="/login">
+              <Link className="btn d-flex flex-reverse btn-small float-right btn-light m-2" to="/login">
                 Login
               </Link>
               <Link className="btn d-flex flex-reverse btn-small float-right btn-light m-2" to="/signup">
