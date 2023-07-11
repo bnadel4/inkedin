@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { GET_POSTS } from '../../utils/queries';
 
 import '../css/style.css';
-
+import '../css/fonts.css';
 
 
 const PostList = () => {
@@ -20,17 +20,17 @@ const PostList = () => {
   
   console.log(posts);
   return (
-    <div>
+    <div >
       { !loading && posts && posts.map((post) => (
         <div class="card container col-md-5 border border-5 border-dark rounded-5 postlist posttext" key={post._id}>
-          <h3 class="card-title">{post.username}</h3>
-            <p>{post.postText}</p>
+          <h3 class="font card-title">{post.username}</h3>
+            <p class="font">{post.postText}</p>
               {post.imageURL && <img src={post.imageURL} alt="Post" />}
           <p><CommentForm/></p>
-            <h4 class="card-text">Comments:</h4>
+            <h4 class="font card-text">Comments:</h4>
               {post.comments.map((comment) => (
-              <div class="card-footer text-muted" key={comment._id}>
-                <p>{comment.username}: {comment.commentText}</p>
+              <div class="font card-footer text-muted" key={comment._id}>
+                <p class="font">{comment.username}: {comment.commentText}</p>
               </div>
           ))}
         </div>
