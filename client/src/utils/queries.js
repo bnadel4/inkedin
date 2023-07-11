@@ -58,3 +58,21 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const GET_POSTS = gql`
+  query posts {
+    posts {
+      _id
+      username
+      imageURL
+      postText
+      createdAt
+      comments {
+        commentId
+        username
+        commentText
+        createdAt
+      }
+    }
+  }
+`;
