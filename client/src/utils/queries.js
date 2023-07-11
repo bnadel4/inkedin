@@ -67,7 +67,12 @@ export const GET_POSTS = gql`
       imageURL
       postText
       createdAt
-      comments
+      comments {
+        commentId
+        username
+        commentText
+        createdAt
+      }
     }
   }
 `;

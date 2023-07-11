@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_POSTS } from '../../utils/queries'; // Import the GET_POSTS query
+import { GET_POSTS } from '../../utils/queries';
 
 const PostList = () => {
   // Use the useQuery hook to fetch the posts
@@ -11,10 +11,11 @@ const PostList = () => {
 
   const { posts } = data;
   
+  console.log(posts);
   return (
     <div>
       <h2>Post List</h2>
-      {posts.map((post) => (
+      { !loading && posts && posts.map((post) => (
         <div key={post._id}>
           <h3>{post.username}</h3>
           <p>{post.postText}</p>
