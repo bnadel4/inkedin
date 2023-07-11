@@ -7,7 +7,7 @@ const typeDefs = gql`
     email: String!
     password: String!
     zipcode: String
-    isArtist: Boolean
+    isArtist: Boolean!
     contact: String
     imageURL: String
     posts: [Post!]
