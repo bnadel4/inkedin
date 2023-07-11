@@ -9,13 +9,15 @@ import CreatePost from '../components/createPost';
 
 
 const Home = () => {
- 
+  
+
+
   return (
     <div>
       Hello, This is the Body in the HOME section, Home should have Post Lists, and endlesss scroll
       Any Side Bar elements That may be needed.
 
-      <PostList/> PostList does not currently work as an individual component graphql error POST 404 not found
+      <PostList/>
 
       {/* <CommentForm/> Going to Comment out, for testing purposes CommentForm works, need to figure out if this needs to be here or in the postList.js */}
 

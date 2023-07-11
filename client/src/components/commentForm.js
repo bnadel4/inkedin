@@ -21,15 +21,19 @@ const CommentForm = ({ onSubmit }) => {
 
   return (
     <div>
-      <h2>Add a Comment</h2>
       <form onSubmit={handleSubmit}>
-        <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          placeholder="Your comment"
-          required
-        ></textarea>
-        <button type="submit">Submit</button>
+        <div className="input-group">
+          <span className="input-group-text">
+            <button type="submit" className="btn btn-secondary">Submit</button>
+          </span>
+          <textarea
+            className="form-control"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="Add Your Comment Here!"
+            required
+          ></textarea>
+        </div>
       </form>
     </div>
   );
