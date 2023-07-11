@@ -1,15 +1,9 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_POSTS } from '../utils/queries';
-import PostList from './components/postList';
-import CommentForm from './components/commentForm';
-import CommentList from './components/commentList';
-import CreatePost from './components/createPost';
-
-
 
 const Home = () => {
- 
+  
+
+
   return (
     <div>
       Hello, This is the Body in the HOME section, Home should have Post Lists, and endlesss scroll
