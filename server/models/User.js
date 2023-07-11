@@ -24,10 +24,6 @@ const userSchema = new Schema({
   //   minlength: 5,
   //   maxlength: 5,
   // },
-  // isArtist: {
-  //   type: Boolean,
-  //   default: false,
-  // },
   // contact: {
   //   type: String,
   // },

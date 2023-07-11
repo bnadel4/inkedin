@@ -35,14 +35,13 @@ const resolvers = {
   Mutation: {
     addUser: async (
       parent,
-      { username, email, password, zipcode, isArtist, contact, imageURL }
+      { username, email, password, zipcode, contact, imageURL }
     ) => {
       const user = await User.create({
         username,
         email,
         password,
         zipcode,
-        isArtist,
         contact,
         imageURL,
       });
@@ -63,12 +62,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    updateUser: async (parent, { zipcode, isArtist, contact, imageURL }) => {
+    updateUser: async (parent, { zipcode, contact, imageURL }) => {
       const user = await User.findOneAndUpdate(
         { _id: context.user._id },
         {
           zipcode,
-          isArtist,
           contact,
           imageURL,
         }
