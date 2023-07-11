@@ -52,7 +52,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    updateUser: async (parent, { zipcode, isArtist, contact, imageURL }) => {
+    updateUser: async (parent, { zipcode, isArtist, contact, imageURL }, context) => {
       const user = await User.findOneAndUpdate(
         { _id: context.user._id },
         { 
