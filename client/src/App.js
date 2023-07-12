@@ -11,6 +11,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
 const httpLink = createHttpLink({
   uri: "/graphql",
 });

@@ -17,7 +17,7 @@ const Login = () => {
       const { data } = await login({
         variables: { email: username, password },
       });
-      
+
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
@@ -28,38 +28,47 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="username">Email</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit" onClick={handleLogin}>Login</button>
-      </form>
+    <div className="d-flex justify-content-center align-items-center loginform">
+      <div className="card">
+        <h4 className="card-header bg-dark text-light p-2">Login</h4>
+        <div className="card-body">
+          <form onSubmit={handleLogin}>
+            <div className="form-floating mb-3">
+              <input
+                type="email"
+                className="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <label htmlFor="floatingInput">Email address</label>
+            </div>
+            <div className="form-floating">
+              <input
+                type="password"
+                className="form-control"
+                id="floatingPassword"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <label htmlFor="floatingPassword">Password</label>
+            </div>
+            <button type="submit" className="btn btn-lg btn-secondary mt-4">Login</button>
+          </form>
 
-      {error && (
-        <div>
-          <p>Error logging in. Please try again.</p>
-          <p>{error.message}</p>
+          {error && (
+            <div>
+              <p>Error logging in. Please try again.</p>
+              <p>{error.message}</p>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
-  )};
+  );
+};
 
 export default Login;
 

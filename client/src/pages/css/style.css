@@ -6,3 +6,16 @@
 .posttext{
     text-align: center;
 }
+
+.mainheader{
+    font-size: 80px;
+    padding-top: 30px;
+}
+
+.loginform{
+    margin-top: 100px;
+}
+
+.signupform{
+    margin-left: 40px;
+}

@@ -23,7 +23,6 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     try {
       const { data } = await addUser({
@@ -37,7 +36,8 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
+    <div className="mx-auto" style={{ maxWidth: '400px' }}>
       <main className="flex-row justify-center mb-4">
         <div className="col-12 col-lg-10">
           <div className="card">
@@ -50,32 +50,41 @@ const Signup = () => {
                 </p>
               ) : (
                 <form onSubmit={handleFormSubmit}>
-                  <input
-                    className="form-input"
-                    placeholder="Your username"
-                    name="username"
-                    type="text"
-                    value={formState.name}
-                    onChange={handleChange}
-                  />
-                  <input
-                    className="form-input"
-                    placeholder="Your email"
-                    name="email"
-                    type="email"
-                    value={formState.email}
-                    onChange={handleChange}
-                  />
-                  <input
-                    className="form-input"
-                    placeholder="******"
-                    name="password"
-                    type="password"
-                    value={formState.password}
-                    onChange={handleChange}
-                  />
+                  <div className="form-floating mb-3">
+                    <input
+                      className="form-control"
+                      placeholder="Your username"
+                      name="username"
+                      type="text"
+                      value={formState.username}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="username">Your username</label>
+                  </div>
+                  <div className="form-floating mb-3">
+                    <input
+                      className="form-control"
+                      placeholder="Your email"
+                      name="email"
+                      type="email"
+                      value={formState.email}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="email">Your email</label>
+                  </div>
+                  <div className="form-floating">
+                    <input
+                      className="form-control"
+                      placeholder="******"
+                      name="password"
+                      type="password"
+                      value={formState.password}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="password">Password</label>
+                  </div>
                   <button
-                    className="btn btn-block btn-primary"
+                    className="btn btn-secondary mt-3"
                     style={{ cursor: 'pointer' }}
                     type="submit"
                   >
@@ -94,10 +103,12 @@ const Signup = () => {
         </div>
       </main>
     </div>
+  </div>
   );
 };
 
 export default Signup;
+
 
 // const Signup = () => {
 //   const [formState, setFormState] = useState({

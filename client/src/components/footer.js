@@ -1,10 +1,15 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer>
-      Footer Just needs styled
+    <footer className="bg-dark text-light py-3">
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col text-center">
+            <p>Footer Just needs styled</p>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };
