@@ -33,8 +33,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password, zipcode, isArtist, contact, imageURL }) => {
-      const user = await User.create({ username, email, password, zipcode, isArtist, contact, imageURL });
+    addUser: async (parent, { username, email, password, zipcode, contact, imageURL }) => {
+      const user = await User.create({ username, email, password, zipcode, contact, imageURL });
       const token = signToken(user);
       return { token, user };
     },
@@ -44,20 +44,14 @@ const resolvers = {
         throw new AuthenticationError('No user found with this email address');
       }
 
-      const correctPw = await user.isCorrectPassword(password);
-      if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
-      }
-
       const token = signToken(user);
       return { token, user };
     },
-    updateUser: async (parent, { zipcode, isArtist, contact, imageURL }) => {
+    updateUser: async (parent, { zipcode, contact, imageURL, context }) => {
       const user = await User.findOneAndUpdate(
         { _id: context.user._id },
         { 
           zipcode,
-          isArtist,
           contact,
           imageURL
         }

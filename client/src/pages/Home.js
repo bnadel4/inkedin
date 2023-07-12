@@ -1,5 +1,5 @@
 import React from 'react';
-import PostList from './components/postList';
+import PostList from '../components/postList';
 const Home = () => {
   
 
