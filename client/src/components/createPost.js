@@ -11,7 +11,6 @@ const CreatePost = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Pass the new post data to the parent component
     onSubmit({ title, content });
     setTitle('');
     setContent('');
