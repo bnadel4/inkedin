@@ -58,12 +58,12 @@ const resolvers = {
       );
       return user
     },
-    addPost: async (parent, { postText, imageURL }, context) => {
-      if (context.user) {
+    addPost: async (parent, { postText, imageURL, username }, context) => {
+      // if (context.user) {
         const post = await Post.create({
           postText,
           imageURL,
-          username: context.user.username,
+          username: username,
         });
 
         await User.findOneAndUpdate(
@@ -72,7 +72,7 @@ const resolvers = {
         );
 
         return post;
-      }
+      // }
       throw new AuthenticationError('You need to be logged in!');
     },
     updatePost: async (parent, { postId, postText, imageURL }, context) => {
