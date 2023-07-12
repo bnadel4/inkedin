@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
   username: {
@@ -24,10 +24,7 @@ const userSchema = new Schema({
     minlength: 5,
     maxlength: 5,
   },
-  isArtist: {
-    type: Boolean,
-    default: false,
-  },
+ 
   contact: {
     type: String,
   },
