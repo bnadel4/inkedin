@@ -4,7 +4,6 @@ import { useQuery } from '@apollo/client';
 import CreatePost from "../components/createPost"
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import CreatePost from '../components/createPost';
 
 
 const Profile = () => {
