@@ -47,7 +47,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    updateUser: async (parent, { zipcode, contact, imageURL, context }) => {
+    updateUser: async (parent, { zipcode, contact, imageURL },context) => {
       const user = await User.findOneAndUpdate(
         { _id: context.user._id },
         { 
@@ -58,21 +58,21 @@ const resolvers = {
       );
       return user
     },
-    addPost: async (parent, { postText, imageURL, username }, context) => {
-      // if (context.user) {
+    addPost: async (parent, { postText, imageURL }, context) => {
+      if (context.user) {
         const post = await Post.create({
           postText,
           imageURL,
-          username: username,
+          username: context.user.username, // Use context.user.username instead of username
         });
-
+    
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { posts: post._id } }
         );
-
+    
         return post;
-      // }
+      }
       throw new AuthenticationError('You need to be logged in!');
     },
     updatePost: async (parent, { postId, postText, imageURL }, context) => {
