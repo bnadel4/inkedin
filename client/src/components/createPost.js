@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { ADD_THOUGHT } from '../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../utils/queries';
+import { ADD_POST } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const CreatePost = ({ onSubmit }) => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+const CreatePost = () => {
+  const [postText, setPostText] = useState('');
+  const [imageURL, setImageURL] = useState('');
+  const [addPost, { error }] = useMutation(ADD_POST);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit({ title, content });
-    setTitle('');
-    setContent('');
+    try {
+      const username = Auth.getLoggedInUsername(); 
+      console.log(username)// Get the username
+      const { data } = await addPost({
+        variables: { postText, imageURL, username },
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+    setPostText('');
+    setImageURL('');
   };
 
   return (
-    <div className="card">
+    <div className="card font">
       <div className="card-body">
         <h2>Create a New Post</h2>
         <form onSubmit={handleSubmit}>
@@ -26,22 +34,22 @@ const CreatePost = ({ onSubmit }) => {
             <input
               type="text"
               className="form-control"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Title"
+              value={imageURL}
+              onChange={(e) => setImageURL(e.target.value)}
+              placeholder="Image URL"
               required
             />
-            <label htmlFor="title">Title</label>
+            <label htmlFor="imageURL">Image URL</label>
           </div>
           <div className="form-floating mb-3">
             <textarea
               className="form-control"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder="Content"
+              value={postText}
+              onChange={(e) => setPostText(e.target.value)}
+              placeholder="Post Text"
               required
             ></textarea>
-            <label htmlFor="content">Content</label>
+            <label htmlFor="postText">Post Text</label>
           </div>
           <button type="submit" className="btn btn-secondary">Submit</button>
         </form>
@@ -51,3 +59,4 @@ const CreatePost = ({ onSubmit }) => {
 };
 
 export default CreatePost;
+

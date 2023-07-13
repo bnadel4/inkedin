@@ -26,15 +26,6 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      zipcode
-      contact
-      imageURL
-      Posts {
-        _id
-        PostText
-        imageURL
-        createdAt
-      }
     }
   }
 `;

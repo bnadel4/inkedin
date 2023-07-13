@@ -10,7 +10,7 @@ const CommentForm = (props) => {
   const [addComment, { data, loading, error }] = useMutation(ADD_COMMENT);
 
   if (loading) return 'Submitting...';
-  if (error) return `Submission error! ${error.message}`;
+  if (error) return `You must be logged in to comment on a post!`;
 
   const handleSubmit =  async (event) => {
     event.preventDefault();

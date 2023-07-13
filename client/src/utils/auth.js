@@ -34,6 +34,19 @@ class AuthService {
     localStorage.removeItem('id_token');
     window.location.reload();
   }
+
+  getLoggedInUsername() {
+    const token = this.getToken();
+    if (token) {
+      const profile = this.getProfile();
+      console.log(profile.username);
+      return profile.username;
+      
+    }
+    return null;
+  }
+
+
 }
 const Auth = new AuthService();
 export default Auth;
