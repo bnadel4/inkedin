@@ -5,14 +5,31 @@ import { ADD_COMMENT } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 
-const CommentForm = ({ onSubmit }) => {
+const CommentForm = (props) => {
   const [comment, setComment] = useState('');
+  const [addComment, { data, loading, error }] = useMutation(ADD_COMMENT);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Pass the new comment data to the parent component
-    onSubmit(comment);
-    setComment('');
+  if (loading) return 'Submitting...';
+  if (error) return `Submission error! ${error.message}`;
+
+  const handleSubmit =  async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addComment({
+        variables: { postId: props.postid, commentText: comment, username: props.username },
+      });
+
+      setComment('');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+      setComment(value);
+
   };
 
   return (
@@ -25,7 +42,7 @@ const CommentForm = ({ onSubmit }) => {
           <textarea
             className="form-control"
             value={comment}
-            onChange={(e) => setComment(e.target.value)}
+            onChange={handleChange}
             placeholder="Add Your Comment Here!"
             required
           ></textarea>

@@ -114,7 +114,7 @@ const resolvers = {
         console.log(postId, commentText, username)
 
       // create new comment from incoming info        
-      const newComment = new Comment({commentText, username});
+      const newComment = await Comment.create({commentText, username});
       console.log(newComment);
       // push comment to selected post
       const updatedPost = await Post.findOneAndUpdate(
@@ -128,7 +128,7 @@ const resolvers = {
                   new: true,
                   runValidators: true,  
                 }
-              );
+              ).populate("comments");;
             // }
             // throw new AuthenticationError('You need to be logged in!');
       console.log(updatedPost);

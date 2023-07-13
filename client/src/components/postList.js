@@ -19,6 +19,7 @@ const PostList = () => {
   const { posts } = data;
   
   console.log(posts);
+
   return (
     <div>
       { !loading && posts && posts.map((post) => (
@@ -26,13 +27,16 @@ const PostList = () => {
           <h3 class="font card-title">{post.username}</h3>
             <p class="font">{post.postText}</p>
               {post.imageURL && <img src={post.imageURL} alt="Post" />}
-          <p><CommentForm/></p>
+          <div><CommentForm postid={post._id} username="PJ"/></div>
             <h4 class="font card-text">Comments:</h4>
-              {post.comments.map((comment) => (
+
+              {post.comments.length ? 
+              post.comments.map((comment) => (
               <div class="font card-footer text-muted" key={comment._id}>
                 <p class="font">{comment.username}: {comment.commentText}</p>
-              </div>
-          ))}
+              </div> 
+              )) : null}
+
         </div>
       ))}
     </div>
