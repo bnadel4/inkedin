@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -67,7 +67,7 @@ const resolvers = {
         });
     
         await User.findOneAndUpdate(
-          { _id: context.user._id },
+           { _id: context.user._id },
           { $addToSet: { posts: post._id } }
         );
     
@@ -109,22 +109,30 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { postId, commentText }, context) => {
-      if (context.user) {
-        return Post.findOneAndUpdate(
-          { _id: postId },
-          {
-            $addToSet: {
-              comments: { commentText, username: context.user.username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
+    addComment: async (parent, { postId, commentText, username }, context) => {
+      // if (context.user) {
+        console.log(postId, commentText, username)
+
+      // create new comment from incoming info        
+      const newComment = await Comment.create({commentText, username});
+      console.log(newComment);
+      // push comment to selected post
+      const updatedPost = await Post.findOneAndUpdate(
+                { _id: postId },
+                {
+                  $addToSet: {
+                    comments: newComment,
+                  },
+                },
+                {
+                  new: true,
+                  runValidators: true,  
+                }
+              ).populate("comments");;
+            // }
+            // throw new AuthenticationError('You need to be logged in!');
+      console.log(updatedPost);
+      return updatedPost;
     },
     updateComment: async (parent, { postId, commentId, commentText }, context) => {
       if (context.user) {

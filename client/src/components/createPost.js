@@ -12,7 +12,8 @@ const CreatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const username = Auth.getLoggedInUsername(); // Get the username
+      const username = Auth.getLoggedInUsername(); 
+      console.log(username)// Get the username
       const { data } = await addPost({
         variables: { postText, imageURL, username },
       });

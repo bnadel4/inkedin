@@ -6,6 +6,15 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      zipcode
+      contact
+      imageURL
+      Posts {
+        _id
+        PostText
+        imageURL
+        createdAt
+      }
     }
   }
 `;

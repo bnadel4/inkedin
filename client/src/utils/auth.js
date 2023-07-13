@@ -39,7 +39,9 @@ class AuthService {
     const token = this.getToken();
     if (token) {
       const profile = this.getProfile();
+      console.log(profile.username);
       return profile.username;
+      
     }
     return null;
   }
