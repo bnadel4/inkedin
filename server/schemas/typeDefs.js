@@ -21,7 +21,7 @@ const typeDefs = gql`
     username: String!
     createdAt: String!
     updatedAt: String!
-    comments: [Comment!]
+    comments: [Comment]
   }
 
   type Comment {

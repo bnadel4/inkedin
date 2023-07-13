@@ -20,7 +20,7 @@ const PostList = () => {
   
   console.log(posts);
   return (
-    <div >
+    <div>
       { !loading && posts && posts.map((post) => (
         <div class="card container col-md-5 border border-5 border-dark rounded-5 postlist posttext" key={post._id}>
           <h3 class="font card-title">{post.username}</h3>

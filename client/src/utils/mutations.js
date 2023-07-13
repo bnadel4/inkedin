@@ -39,7 +39,7 @@ mutation addPost($postText: String!, $username: String!, $imageURL: String) {
 export const ADD_COMMENT = gql`
 mutation addComment($postId: ID!, $commentText: String!, $username: String!) {
   addComment(postId: $postId, commentText: $commentText, username: $username) {
-    postId
+    _id
     comments {
       commentText
       username

@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -112,20 +112,27 @@ const resolvers = {
     addComment: async (parent, { postId, commentText, username }, context) => {
       // if (context.user) {
         console.log(postId, commentText, username)
-        return Post.findOneAndUpdate(
-          { _id: postId },
-          {
-            $addToSet: {
-              comments: { commentText: commentText, username: username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,  
-          }
-        );
-      // }
-      // throw new AuthenticationError('You need to be logged in!');
+
+      // create new comment from incoming info        
+      const newComment = new Comment({commentText, username});
+      console.log(newComment);
+      // push comment to selected post
+      const updatedPost = await Post.findOneAndUpdate(
+                { _id: postId },
+                {
+                  $addToSet: {
+                    comments: newComment,
+                  },
+                },
+                {
+                  new: true,
+                  runValidators: true,  
+                }
+              );
+            // }
+            // throw new AuthenticationError('You need to be logged in!');
+      console.log(updatedPost);
+      return updatedPost;
     },
     updateComment: async (parent, { postId, commentId, commentText }, context) => {
       if (context.user) {
