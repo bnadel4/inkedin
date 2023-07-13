@@ -1,31 +1,24 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
-import { QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
-const CreatePost = ({ }) => {
+const CreatePost = () => {
   const [postText, setPostText] = useState('');
   const [imageURL, setImageURL] = useState('');
-  const [username, setUsername] = useState('');
-  const { data } = useQuery(QUERY_ME);
-  const user = data?.me || data?.user || {};
-
-  if (data?.me) { setUsername(user.username) }
-
-  const [addPost, { error }] = useMutation(ADD_POST)
+  const [addPost, { error }] = useMutation(ADD_POST);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const username = Auth.getLoggedInUsername(); // Get the username
       const { data } = await addPost({
-        variables: { postText, imageURL, username }
-      })
-      console.log(data)
+        variables: { postText, imageURL, username },
+      });
+      console.log(data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
     setPostText('');
     setImageURL('');
@@ -45,7 +38,7 @@ const CreatePost = ({ }) => {
               placeholder="Image URL"
               required
             />
-            <label htmlFor="title">Title</label>
+            <label htmlFor="imageURL">Image URL</label>
           </div>
           <div className="form-floating mb-3">
             <textarea
@@ -55,7 +48,7 @@ const CreatePost = ({ }) => {
               placeholder="Post Text"
               required
             ></textarea>
-            <label htmlFor="content">Content</label>
+            <label htmlFor="postText">Post Text</label>
           </div>
           <button type="submit" className="btn btn-secondary">Submit</button>
         </form>
@@ -65,3 +58,4 @@ const CreatePost = ({ }) => {
 };
 
 export default CreatePost;
+
