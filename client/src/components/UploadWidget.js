@@ -1,35 +1,31 @@
-import { useEffect, useRef } from 'react';
-// import { AdvancedImage } from "@cloudinary/react";
-// import { Cloudinary } from "@cloudinary";
+import { useState, useEffect, useRef } from 'react';
 
-import { Cloudinary, CloudinaryImage } from "@cloudinary/url-gen";
-
-const App = () => {
-  const cld = new Cloudinary({ cloud: { cloudName: "dr5gnnrri" } });
-};
-
-const UploadWidget = () => {
+const UploadWidget = ({ onImageUpload }) => {
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
+  const [uploadedImage, setUploadedImage] = useState(null);
+
   useEffect(() => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget({
-      cloudName:"dr5gnnrri",
+      cloudName: "dr5gnnrri",
       uploadPreset: "pvwwtiuy"
-    }, function(error, result) {
-      console.log(result);
+    }, function (error, result) {
+      if (result.event === "success") {
+        const imageUrl = `https://res.cloudinary.com/dr5gnnrri/image/upload/${result.info.public_id}`;
+        setUploadedImage(imageUrl);
+        onImageUpload(imageUrl); // Invoke the callback function with the image URL
+      }
     });
-  }, [])
-  
-  
+  }, [onImageUpload]);
+
+  const openWidget = () => {
+    widgetRef.current.open();
+  }
+
   return (
     <div>
-      <button onClick={() => widgetRef.current.open()}>Upload Image</button>
-
-      <cloudinaryRef
-        cloudName="dr5gnnrri"
-        publicId="https://res.cloudinary.com/dr5gnnrri/image/upload/v1689257032/samples/look-up.jpg"
-      />
+      <button onClick={openWidget}>Upload Image</button>
     </div>
   );
 };
