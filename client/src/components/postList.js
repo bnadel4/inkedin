@@ -22,15 +22,15 @@ const PostList = () => {
   return (
     <div >
       { !loading && posts && posts.map((post) => (
-        <div class="card container col-md-5 border border-5 border-dark rounded-5 postlist posttext" key={post._id}>
-          <h3 class="font card-title">{post.username}</h3>
-            <p class="font">{post.postText}</p>
+        <div className="card container col-md-5 border border-5 border-dark rounded-5 postlist posttext" key={post._id}>
+          <h3 className="font card-title">{post.username}</h3>
+            <p className="font">{post.postText}</p>
               {post.imageURL && <img src={post.imageURL} alt="Post" />}
-          <p><CommentForm/></p>
-            <h4 class="font card-text">Comments:</h4>
+          <section><CommentForm/></section>
+            <h4 className="font card-text">Comments:</h4>
               {post.comments.map((comment) => (
-              <div class="font card-footer text-muted" key={comment._id}>
-                <p class="font">{comment.username}: {comment.commentText}</p>
+              <div className="font card-footer text-muted" key={comment._id}>
+                <p className="font">{comment.username}: {comment.commentText}</p>
               </div>
           ))}
         </div>

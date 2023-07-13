@@ -16,7 +16,7 @@ const Profile = () => {
   const user = data?.me || data?.user || {};
 
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  if (Auth.loggedIn() && Auth.getLoggedInUsername() === userParam) {
     return <Navigate to="/profile" />;
   }
 
