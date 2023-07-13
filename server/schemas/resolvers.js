@@ -62,12 +62,12 @@ const resolvers = {
       // if (context.user) {
         const post = await Post.create({
           postText,
-          imageURL,
-          username: username,
+          username,
+          imageURL
         });
 
         await User.findOneAndUpdate(
-          { _id: context.user._id },
+          { username: username },
           { $addToSet: { posts: post._id } }
         );
 
@@ -109,22 +109,23 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { postId, commentText }, context) => {
-      if (context.user) {
+    addComment: async (parent, { postId, commentText, username }, context) => {
+      // if (context.user) {
+        console.log(postId, commentText, username)
         return Post.findOneAndUpdate(
           { _id: postId },
           {
             $addToSet: {
-              comments: { commentText, username: context.user.username },
+              comments: { commentText: commentText, username: username },
             },
           },
           {
             new: true,
-            runValidators: true,
+            runValidators: true,  
           }
         );
-      }
-      throw new AuthenticationError('You need to be logged in!');
+      // }
+      // throw new AuthenticationError('You need to be logged in!');
     },
     updateComment: async (parent, { postId, commentId, commentText }, context) => {
       if (context.user) {
