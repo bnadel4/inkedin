@@ -1,6 +1,6 @@
 # InkedIn
 
-## ![license](https://img.shields.io/badge/license-MIT-green)
+[![license](https://img.shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)
 
 ## Description
 
@@ -10,9 +10,8 @@ Our motivation for this project was to build a MERN-based social media platform 
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Links](#links)
 - [License](#license)
-- [Contributing](#contributing)
-- [Tests](#tests)
 - [Questions](#questions)
 
 ## Installation
@@ -21,19 +20,23 @@ Download the .zip file or clone the repository into your source-code editor. Nav
 
 ## Usage
 
-Screenshot:
+1. Start the application by running "npm run develop" in the terminal. It should open in your web browser.
+2. Once the application is running in your web browser, click the Signup button to create a user profile.
+3. Post your sick tats!
+
+Homepage: ![An image of the InkedIn application's homepage.](./client/public/homepage.jpg) 
+
+Login Page: ![An image of the InkedIn application's login page.](./client/public/login.jpg)
+
+## Links
+
+GitHub Repository: https://github.com/bnadel4/inkedin
+
+Heroku Deployed Application: https://inkedin-ef5cc989f602.herokuapp.com/
 
 ## License
 
 This application is covered under the MIT License. For more information about this license, visit https://opensource.org/license/mit/.
-
-## Contributing
-
-N/A
-
-## Tests
-
-N/A
 
 ## Questions
 
