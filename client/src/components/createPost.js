@@ -32,7 +32,7 @@ const CreatePost = ({ }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card font">
       <div className="card-body">
         <h2>Create a New Post</h2>
         <form onSubmit={handleSubmit}>

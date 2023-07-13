@@ -11,9 +11,9 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-dark text-light">
-      <div className="d-flex flex-fill container mb-4 py-3 sticky-top">
-        <div className="d-flex row flex-fill align-items-center">
+    <header className="bg-dark text-light d-flex justify-content-center">
+      <div className="flex-fill mb-4 mx-0 py-3 sticky-top">
+        <div className="row flex-fill align-items-center">
           <div className="col">
             <p className ='title-font mainheader'>InkedIn</p>
           </div>
