@@ -9,7 +9,11 @@
 
 .mainheader{
     font-size: 80px;
-    padding-top: 30px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    justify-content: start;
 }
 
 .loginform{

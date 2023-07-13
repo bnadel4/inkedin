@@ -36,7 +36,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 font">
     <div className="mx-auto" style={{ maxWidth: '400px' }}>
       <main className="flex-row justify-center mb-4">
         <div className="col-12 col-lg-10">
