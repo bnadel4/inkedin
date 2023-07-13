@@ -13,7 +13,7 @@ const CreatePost = () => {
     e.preventDefault();
     try {
       const username = Auth.getLoggedInUsername(); 
-      console.log(username)// Get the username
+      console.log(username)
       const { data } = await addPost({
         variables: { postText, imageURL, username },
       });
