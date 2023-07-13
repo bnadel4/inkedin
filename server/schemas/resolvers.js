@@ -63,7 +63,7 @@ const resolvers = {
         const post = await Post.create({
           postText,
           imageURL,
-          username: context.user.username, // Use context.user.username instead of username
+          username: context.user.username, 
         });
     
         await User.findOneAndUpdate(
@@ -110,13 +110,13 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     addComment: async (parent, { postId, commentText, username }, context) => {
-      // if (context.user) {
+   
         console.log(postId, commentText, username)
 
-      // create new comment from incoming info        
+             
       const newComment = await Comment.create({commentText, username});
       console.log(newComment);
-      // push comment to selected post
+      
       const updatedPost = await Post.findOneAndUpdate(
                 { _id: postId },
                 {
@@ -129,8 +129,7 @@ const resolvers = {
                   runValidators: true,  
                 }
               ).populate("comments");;
-            // }
-            // throw new AuthenticationError('You need to be logged in!');
+         
       console.log(updatedPost);
       return updatedPost;
     },
