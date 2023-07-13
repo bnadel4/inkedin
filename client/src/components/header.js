@@ -11,11 +11,11 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-dark text-light mb-4 py-3">
-      <div className="container">
-        <div className="row align-items-center justify-content-between">
+    <header className="bg-dark text-light">
+      <div className="d-flex flex-fill container mb-4 py-3 sticky-top">
+        <div className="d-flex row flex-fill align-items-center">
           <div className="col">
-            <p className ='font mainheader'>InkedIn</p>
+            <p className ='title-font mainheader'>InkedIn</p>
           </div>
           <div className="col">
             {Auth.loggedIn() ? (
@@ -34,7 +34,7 @@ const Header = () => {
               </>
             ) : ( 
               <>
-              <div className= 'd-flex justify-content-end'>
+              <div className= 'd-flex justify-content-end title-font'>
               <Link className="btn btn-lg btn-light m-2" to="/">
                   Home
                 </Link>

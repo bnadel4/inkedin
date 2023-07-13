@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center loginform">
+    <div className="d-flex justify-content-center align-items-center loginform font">
       <div className="card">
         <h4 className="card-header bg-dark text-light p-2">Login</h4>
         <div className="card-body">

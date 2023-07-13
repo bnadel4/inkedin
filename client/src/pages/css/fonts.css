@@ -1,5 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Aclonica&family=Josefin+Sans&family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grenze:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grenze:wght@600&display=swap');
 
-.font{
-    font-family: 'Aclonica', sans-serif;
+.title-font {
+    font-family: 'Grenze', serif;
+    font-weight: 800;
+}
+
+.font {
+    font-family: 'Grenze', serif;
+    font-weight: 600;
 }
