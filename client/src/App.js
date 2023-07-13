@@ -10,6 +10,7 @@ import Signup from './pages/Signup';
 import Header from './components/header';
 import Footer from './components/footer';
 import 'bootstrap/dist/css/bootstrap.css';
+import UploadWidget from "../src/components/UploadWidget";
 
 
 const httpLink = createHttpLink({
@@ -34,20 +35,24 @@ const client = new ApolloClient({
 
 function App() {
   return (
-  <ApolloProvider client={client}>
-    <Router>
-      <div>
-    <Header/>
-      <Routes>
-        <Route path="/" exact element={<Home/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/profile" element={<Profile/>} />
-        <Route path="/signup" element={<Signup/>} />
-      </Routes>
-    <Footer/>
-      </div>
-    </Router>
-  </ApolloProvider> 
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <Header />
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+          {/* UploadWidget component */}
+          <div classname="container">
+            <UploadWidget />
+          </div>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
