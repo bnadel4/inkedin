@@ -45,10 +45,14 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
+
           {/* UploadWidget component */}
           <div classname="container">
             <UploadWidget />
           </div>
+          {/* UploadWidget component */}
+
+
           <Footer />
         </div>
       </Router>
