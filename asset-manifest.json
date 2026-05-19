@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/inkedin/static/css/main.42b88802.css",
+    "main.js": "/inkedin/static/js/main.e672c05e.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/inkedin/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/inkedin/index.html",
+    "main.42b88802.css.map": "/inkedin/static/css/main.42b88802.css.map",
+    "main.e672c05e.js.map": "/inkedin/static/js/main.e672c05e.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/inkedin/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42b88802.css",
+    "static/js/main.e672c05e.js"
+  ]
+}
