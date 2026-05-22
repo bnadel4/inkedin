@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../utils/mutations';
-import Auth from '../utils/auth';
 
 
 const CommentForm = (props) => {
   const [comment, setComment] = useState('');
-  const [addComment, { data, loading, error }] = useMutation(ADD_COMMENT);
+  const [addComment, { loading, error }] = useMutation(ADD_COMMENT);
 
   if (loading) return 'Submitting...';
   if (error) return `You must be logged in to comment on a post!`;
@@ -16,7 +14,7 @@ const CommentForm = (props) => {
     event.preventDefault();
 
     try {
-      const { data } = await addComment({
+      await addComment({
         variables: { postId: props.postid, commentText: comment, username: props.username },
       });
 
@@ -27,7 +25,7 @@ const CommentForm = (props) => {
   };
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
       setComment(value);
 
   };

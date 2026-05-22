@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 const CreatePost = () => {
   const [postText, setPostText] = useState('');
   const [imageURL, setImageURL] = useState('');
-  const [addPost, { error }] = useMutation(ADD_POST);
+  const [addPost] = useMutation(ADD_POST);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
